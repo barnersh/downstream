@@ -11,4 +11,4 @@ jobs:
         run: |
           curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
                https://api.github.com/repos/barnersh/upstream/releases \
-               | grep "upstream ok"
+               | grep "TSK-11"
