@@ -4,10 +4,10 @@ on:
       - main
 
 jobs:
-  deploy-to-beanstalk:
+  Check Upstream:
     runs-on: ubuntu-latest
     steps:
-      - name: Check B-1 deployment
+      - name: Check Upstream deployment
         run: |
           curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
                https://api.github.com/repos/barnersh/upstream/releases \
