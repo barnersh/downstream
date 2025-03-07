@@ -4,7 +4,7 @@ on:
       - main
 
 jobs:
-  Check Upstream:
+  check-upstream:
     runs-on: ubuntu-latest
     steps:
       - name: Check Upstream deployment
