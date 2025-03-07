@@ -1,0 +1,6 @@
+steps:
+  - name: Check B-1 deployment
+    run: |
+      curl -H "Authorization: token ${{ secrets.TOKEN }}" \
+           https://api.github.com/repos/barnersh/upstream/releases \
+           | grep "B-1 feature deployed"
