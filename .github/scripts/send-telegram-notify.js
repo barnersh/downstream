@@ -7,7 +7,7 @@
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            chat_id: '-1001804960926',
+            chat_id: '6294043429',
             text: 'tg-deply-notify'
         })
     })
