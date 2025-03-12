@@ -32,7 +32,8 @@
 🔀 ${prData.branch} → ${prData.base}
 📝 描述: 
 ${getFirstLine(`${prData.description}`)}
-            `
+            `,
+            parse_mode: 'Markdown'
         })
     })
         .then(response => response.json())
