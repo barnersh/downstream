@@ -12,3 +12,12 @@ jobs:
           curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
                https://api.github.com/repos/barnersh/upstream/releases \
                | grep "TSK-11"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Check Release Parent Status and Extract Tag
+        id: check-parents
+        run: node .github/scripts/send-telegram-notify.js
