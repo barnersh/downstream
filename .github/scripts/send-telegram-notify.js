@@ -19,7 +19,7 @@
         },
         body: JSON.stringify({
             message_thread_id: '155',
-            chat_id: '-1001804960926_155',
+            chat_id: '-1001804960926',
             text: `
 🔔 *${prData.repo}*
 📌 [#${prData.number}: ${prData.title}](${prData.url})
