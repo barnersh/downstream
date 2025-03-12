@@ -18,6 +18,7 @@
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+            message_thread_id: '155',
             chat_id: '-1001804960926_155',
             text: `
 🔔 *${prData.repo}*
