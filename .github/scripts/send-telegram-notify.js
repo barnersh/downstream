@@ -15,7 +15,7 @@
 
     const url = `https://api.telegram.org/bot${prData.tgToken}/sendMessage`;
 
-    console.log(`${prData.branch}`)
+    console.log(`🔀 ${prData.branch} → ${prData.base}`)
 
     fetch(url, {
         method: 'POST',
