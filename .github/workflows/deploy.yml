@@ -18,6 +18,6 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Check Release Parent Status and Extract Tag
-        id: check-parents
+      - name: Send Telegram Notify
+        id: send-telegram-notify
         run: node .github/scripts/send-telegram-notify.js
