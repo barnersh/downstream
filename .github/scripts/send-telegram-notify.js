@@ -14,6 +14,7 @@
     };
 
     const url = `https://api.telegram.org/bot${prData.tgToken}/sendMessage`;
+    console.log(`${prData.description}`)
 
     fetch(url, {
         method: 'POST',
