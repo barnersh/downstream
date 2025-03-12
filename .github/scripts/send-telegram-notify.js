@@ -28,7 +28,8 @@
 📌 [#${prData.number}: ${prData.title}](${prData.url})
 👤 ${prData.author}
 🔀 ${prData.branch} → ${prData.base}
-📝 描述: ${getFirstLine(`${prData.description}`)}
+📝 描述: 
+${getFirstLine(`${prData.description}`)}
             `,
             parse_mode: 'Markdown'
         })
