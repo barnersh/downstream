@@ -2,7 +2,7 @@ name: PR Notification
 
 on:
   pull_request:
-    types: [opened]
+    types: [opened, reopened, synchronize]
 
 jobs:
   notify:
@@ -28,4 +28,5 @@ jobs:
           PR_REPO: ${{ github.repository }}
           PR_BRANCH: ${{ github.event.pull_request.head.ref }}
           PR_BASE: ${{ github.event.pull_request.base.ref }}
+          PR_DESCRIPTION: ${{ github.event.pull_request.body }}
         run: node .github/scripts/send-telegram-notify.js
