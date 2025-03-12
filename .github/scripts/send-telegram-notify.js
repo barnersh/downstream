@@ -8,7 +8,15 @@
         },
         body: JSON.stringify({
             chat_id: '-1001804960926',
-            text: 'tg-deply-notify'
+            text: `
+                🔔 *新的 Pull Request*
+                📌 #${prData.number}: ${prData.title}
+                👤 作者: ${prData.author}
+                🔀 分支: ${prData.branch} → ${prData.base}
+                📁 倉庫: ${prData.repo}
+                🔗 [查看 PR](${prData.url})
+            `,
+            parse_mode: 'Markdown'
         })
     })
         .then(response => response.json())
