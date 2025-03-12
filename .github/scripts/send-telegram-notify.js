@@ -18,7 +18,7 @@
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            chat_id: '-1001804960926',
+            chat_id: '-1001804960926_155',
             text: `
 🔔 *${prData.repo}*
 📌 [#${prData.number}: ${prData.title}](${prData.url})
