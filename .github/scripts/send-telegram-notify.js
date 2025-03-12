@@ -7,10 +7,13 @@
         repo: process.env.PR_REPO,
         branch: process.env.PR_BRANCH,
         base: process.env.PR_BASE,
-        description: process.env.PR_DESCRIPTION
+        description: process.env.PR_DESCRIPTION,
+        tgToken: process.env.TG_BOT_TOKEN,
+        tgDeployNotifyMessageThreadId: process.env.TG_DEPLOY_NOTIFY_MESSAGE_THREAD_ID,
+        tgDeployNotifyChatId: process.env.TG_DEPLOY_NOTIFY_CHAT_ID
     };
 
-    const url = `https://api.telegram.org/bot6294043429:AAHfKoVxMeCEwrNvG9G2zHFhwhSqWmPU5Ys/sendMessage`;
+    const url = `https://api.telegram.org/bot${prData.tgToken}/sendMessage`;
 
     fetch(url, {
         method: 'POST',
@@ -18,8 +21,8 @@
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            message_thread_id: '155',
-            chat_id: '-1001804960926',
+            message_thread_id: `${prData.tgDeployNotifyMessageThreadId}`,
+            chat_id: `${prData.tgDeployNotifyChatId}`,
             text: `
 🔔 *${prData.repo}*
 📌 [#${prData.number}: ${prData.title}](${prData.url})
