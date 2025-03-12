@@ -20,13 +20,12 @@
         body: JSON.stringify({
             chat_id: '-1001804960926',
             text: `
-                🔔 *新的 Pull Request*
-            📌 #${prData.number}: ${prData.title}
-            👤 作者: ${prData.author}
-            🔀 分支: ${prData.branch} → ${prData.base}
-            📁 倉庫: ${prData.repo}
-            📝 描述: ${description}
-            🔗 [查看 PR](${prData.url})
+🔔 *${prData.repo}*
+📌 [#${prData.number}: ${prData.title}](${prData.url})
+👤 ${prData.author}
+🔀 ${prData.branch} → ${prData.base}
+📝 描述: 
+${prData.description}
             `,
             parse_mode: 'Markdown'
         })
