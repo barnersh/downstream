@@ -1,4 +1,14 @@
 (async () => {
+    const prData = {
+        title: process.env.PR_TITLE,
+        number: process.env.PR_NUMBER,
+        author: process.env.PR_AUTHOR,
+        url: process.env.PR_URL,
+        repo: process.env.PR_REPO,
+        branch: process.env.PR_BRANCH,
+        base: process.env.PR_BASE
+    };
+
     const url = `https://api.telegram.org/bot6294043429:AAHfKoVxMeCEwrNvG9G2zHFhwhSqWmPU5Ys/sendMessage`;
 
     fetch(url, {
