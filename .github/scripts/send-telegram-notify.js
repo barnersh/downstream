@@ -14,7 +14,6 @@
     };
 
     const url = `https://api.telegram.org/bot${prData.tgToken}/sendMessage`;
-    console.log(getFirstLine(`${prData.description}`))
 
     fetch(url, {
         method: 'POST',
@@ -29,8 +28,7 @@
 📌 [#${prData.number}: ${prData.title}](${prData.url})
 👤 ${prData.author}
 🔀 ${prData.branch} → ${prData.base}
-📝 描述: 
-${prData.description}
+📝 描述: ${getFirstLine(`${prData.description}`)}
             `,
             parse_mode: 'Markdown'
         })
