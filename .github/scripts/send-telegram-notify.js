@@ -27,11 +27,11 @@
 🔔 *${prData.repo}*
 📌 [#${prData.number}: ${prData.title}](${prData.url})
 👤 ${prData.author}
-🔀 ${prData.branch} → ${prData.base}
+🔀 \`${prData.branch}\` → \`${prData.base}\`
 📝 描述: 
 ${getFirstLine(`${prData.description}`)}
             `,
-            parse_mode: 'HTML'
+            parse_mode: 'Markdown'
         })
     })
         .then(response => response.json())
