@@ -29,7 +29,7 @@ jobs:
           PR_BRANCH: ${{ github.event.pull_request.head.ref }}
           PR_BASE: ${{ github.event.pull_request.base.ref }}
           PR_DESCRIPTION: ${{ github.event.pull_request.body }}
-          TG_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TG_DEPLOY_NOTIFY_MESSAGE_THREAD_ID: ${{ secrets.TELEGRAM_DEPLOY_MESSAGE_THREAD_ID }}
-          TG_DEPLOY_NOTIFY_CHAT_ID: ${{ secrets.TELEGRAM_DEPLOY_CHAT_ID }}
+          TG_BOT_TOKEN: ${{ secrets.CHANNEL_NOTIFY_TELEGRAM_BOT_TOKEN }}
+          TG_DEPLOY_NOTIFY_MESSAGE_THREAD_ID: ${{ vars.CHANNEL_NOTIFY_TELEGRAM_MESSAGE_THREAD_ID }}
+          TG_DEPLOY_NOTIFY_CHAT_ID: ${{ vars.CHANNEL_NOTIFY_TELEGRAM_CHAT_ID }}
         run: node .github/scripts/send-telegram-notify.js
