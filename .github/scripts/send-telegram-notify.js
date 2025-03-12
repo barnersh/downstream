@@ -14,7 +14,7 @@
     };
 
     const url = `https://api.telegram.org/bot${prData.tgToken}/sendMessage`;
-    console.log(`${prData.description}`)
+    console.log(getFirstLine(`${prData.description}`))
 
     fetch(url, {
         method: 'POST',
@@ -39,3 +39,10 @@ ${prData.description}
         .then(data => console.log(data))
         .catch(error => console.error('Error:', error));
 })();
+
+function getFirstLine(text) {
+    if (!text) return '';
+
+    const firstLine = text.split('\n').shift().trim();
+    return firstLine;
+}
