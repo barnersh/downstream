@@ -1,0 +1,25 @@
+name: PR Notification
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger central repository
+        run: |
+            curl -X POST \
+              -H "Authorization: Bearer ${{ secrets.DISPATCH_PAT_TOKEN }}" \
+              -H "Accept: application/vnd.github.v3+json" \
+              https://api.github.com/repos/barnersh/upstream/dispatches \
+              -d '{
+                "event_type": "issue_opened_event",
+                "client_payload": {
+                  "title": "${{ github.event.issue.title }}",
+                  "html_url": "${{ github.event.issue.html_url }}",
+                  "repository": "${{ github.repository }}",
+                  "description": "${{ github.event.issue.body }}"
+                }
+              }'
