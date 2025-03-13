@@ -18,18 +18,38 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Send Telegram Notify
-        id: send-telegram-notify
-        env:
-          PR_TITLE: ${{ github.event.pull_request.title }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
-          PR_URL: ${{ github.event.pull_request.html_url }}
-          PR_REPO: ${{ github.repository }}
-          PR_BRANCH: ${{ github.event.pull_request.head.ref }}
-          PR_BASE: ${{ github.event.pull_request.base.ref }}
-          PR_DESCRIPTION: ${{ github.event.pull_request.body }}
-          TG_BOT_TOKEN: ${{ secrets.CHANNEL_NOTIFY_TELEGRAM_BOT_TOKEN }}
-          TG_DEPLOY_NOTIFY_MESSAGE_THREAD_ID: ${{ vars.CHANNEL_NOTIFY_TELEGRAM_MESSAGE_THREAD_ID }}
-          TG_DEPLOY_NOTIFY_CHAT_ID: ${{ vars.CHANNEL_NOTIFY_TELEGRAM_CHAT_ID }}
-        run: node .github/scripts/send-telegram-notify.js
+      - name: Trigger central repository
+        run: |
+            curl -X POST \
+              -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+              -H "Accept: application/vnd.github.v3+json" \
+              https://api.github.com/repos/barnersh/upstream/dispatches \
+              -d '{
+                "event_type": "pr_opened_event",
+                "client_payload": {
+                  "title": "${{ github.event.pull_request.title }}",
+                  "number": "${{ github.event.pull_request.number }}",
+                  "user": "${{ github.event.pull_request.user.login }}",
+                  "html_url": "${{ github.event.pull_request.html_url }}",
+                  "repository": "${{ github.repository }}",
+                  "branch": "${{ github.event.pull_request.head.ref }}",
+                  "base": "${{ github.event.pull_request.base.ref }}",
+                  "description": "${{ github.event.pull_request.body }}"
+                }
+              }'
+
+#      - name: Send Telegram Notify
+#        id: send-telegram-notify
+#        env:
+#          PR_TITLE: ${{ github.event.pull_request.title }}
+#          PR_NUMBER: ${{ github.event.pull_request.number }}
+#          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+#          PR_URL: ${{ github.event.pull_request.html_url }}
+#          PR_REPO: ${{ github.repository }}
+#          PR_BRANCH: ${{ github.event.pull_request.head.ref }}
+#          PR_BASE: ${{ github.event.pull_request.base.ref }}
+#          PR_DESCRIPTION: ${{ github.event.pull_request.body }}
+#          TG_BOT_TOKEN: ${{ secrets.CHANNEL_NOTIFY_TELEGRAM_BOT_TOKEN }}
+#          TG_DEPLOY_NOTIFY_MESSAGE_THREAD_ID: ${{ vars.CHANNEL_NOTIFY_TELEGRAM_MESSAGE_THREAD_ID }}
+#          TG_DEPLOY_NOTIFY_CHAT_ID: ${{ vars.CHANNEL_NOTIFY_TELEGRAM_CHAT_ID }}
+#        run: node .github/scripts/send-telegram-notify.js
