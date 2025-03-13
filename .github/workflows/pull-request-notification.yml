@@ -17,6 +17,7 @@ jobs:
               -d '{
                 "event_type": "pr_opened_event",
                 "client_payload": {
+                  "event": "${{ github.event }}",
                   "title": "${{ github.event.pull_request.title }}",
                   "number": "${{ github.event.pull_request.number }}",
                   "user": "${{ github.event.pull_request.user.login }}",
