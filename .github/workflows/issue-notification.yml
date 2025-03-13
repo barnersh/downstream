@@ -2,7 +2,7 @@ name: PR Notification
 
 on:
   issues:
-    types: [opened]
+    types: [opened, reopened]
 
 jobs:
   notify:
