@@ -8,12 +8,6 @@ jobs:
   notify:
     runs-on: ubuntu-latest
     steps:
-      - name: Prepare event data
-        id: event_data
-        run: |
-          EVENT_DATA=$(echo '${{ toJSON(github.event) }}' | jq -c .)
-          echo "event_data=$EVENT_DATA" >> $GITHUB_OUTPUT
-
       - name: Trigger central repository
         run: |
             curl -X POST \
@@ -23,7 +17,6 @@ jobs:
               -d '{
                 "event_type": "pr_opened_event",
                 "client_payload": {
-                  "event": ${{ steps.event_data.outputs.event_data }},
                   "title": "${{ github.event.pull_request.title }}",
                   "number": "${{ github.event.pull_request.number }}",
                   "user": "${{ github.event.pull_request.user.login }}",
