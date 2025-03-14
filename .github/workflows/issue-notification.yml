@@ -1,4 +1,4 @@
-name: PR Notification
+name: Issue Notification
 
 on:
   issues:
