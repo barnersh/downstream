@@ -28,6 +28,9 @@ jobs:
                       }
                     }
                   ]
+                },
+                "URL": {
+                  "url": "https://google.com"
                 }
               }
             }'
