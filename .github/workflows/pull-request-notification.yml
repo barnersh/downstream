@@ -25,6 +25,6 @@ jobs:
                   "repository": "${{ github.repository }}",
                   "branch": "${{ github.event.pull_request.head.ref }}",
                   "base": "${{ github.event.pull_request.base.ref }}",
-                  "description": "${{ github.event.pull_request.body }}"
+                  "description": "`${{ github.event.pull_request.body }}`"
                 }
               }'
