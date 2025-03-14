@@ -30,6 +30,7 @@ jobs:
                   ]
                 },
                 "URL": {
+                  "name": "${{ github.event.issue.title }}",
                   "url": "${{ github.event.issue.html_url }}"
                 }
               }
