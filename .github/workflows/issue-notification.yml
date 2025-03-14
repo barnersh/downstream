@@ -24,14 +24,13 @@ jobs:
                   "title": [
                     {
                       "text": {
-                        "content": "Tuscan Kale"
+                        "content": ${{ github.event.issue.title }}
                       }
                     }
                   ]
                 },
                 "URL": {
-                  "name": "${{ github.event.issue.title }}",
-                  "url": "${{ github.event.issue.html_url }}"
+                  "url": ${{ github.event.issue.html_url }}
                 }
               }
             }'
