@@ -30,7 +30,7 @@ jobs:
                   ]
                 },
                 "URL": {
-                  "url": "https://google.com"
+                  "url": "${{ github.event.issue.html_url }}"
                 }
               }
             }'
