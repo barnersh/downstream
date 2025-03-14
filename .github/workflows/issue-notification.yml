@@ -24,13 +24,13 @@ jobs:
                   "title": [
                     {
                       "text": {
-                        "content": ${{ github.event.issue.title }}
+                        "content": "${{ github.event.issue.title }}"
                       }
                     }
                   ]
                 },
                 "URL": {
-                  "url": ${{ github.event.issue.html_url }}
+                  "url": "${{ github.event.issue.html_url }}"
                 }
               }
             }'
