@@ -10,7 +10,6 @@ jobs:
     steps:
       - name: Trigger central repository
         run: |
-            echo ${{ github.event.pull_request.body }}
             curl -X POST \
               -H "Authorization: Bearer ${{ secrets.DISPATCH_PAT_TOKEN }}" \
               -H "Accept: application/vnd.github.v3+json" \
