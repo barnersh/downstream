@@ -15,13 +15,6 @@ jobs:
           ESCAPED_BODY=$(echo "$PR_BODY" | jq -Rs .)
           echo "ESCAPED_BODY=$ESCAPED_BODY" >> $GITHUB_ENV
 
-      - name: Prepare GitHub event data
-        id: prepare-event-data
-        run: |
-          EVENT_JSON='${{ toJSON(github.event) }}'
-          ESCAPED_EVENT=$(echo "$EVENT_JSON" | jq -c .)
-          echo "ESCAPED_EVENT=$ESCAPED_EVENT" >> $GITHUB_ENV
-
       - name: Trigger central repository
         run: |
             curl -X POST \
@@ -38,7 +31,6 @@ jobs:
                   "repository": "${{ github.repository }}",
                   "branch": "${{ github.event.pull_request.head.ref }}",
                   "base": "${{ github.event.pull_request.base.ref }}",
-                  "description": '"$ESCAPED_BODY"',
-                  "github_event": '"$ESCAPED_EVENT"'
+                  "description": '"$ESCAPED_BODY"'
                 }
               }'
